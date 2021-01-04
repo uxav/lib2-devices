@@ -1,0 +1,502 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6F31C5F1-358F-4589-A35D-1D00C7220734}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UX.Lib2.Devices</RootNamespace>
+    <AssemblyName>UX.Lib2.Devices</AssemblyName>
+    <ProjectTypeGuids>{0B4745B0-194B-4BB6-8E21-E9057CA92300};{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <PlatformID>E2BECB1F-8C8C-41ba-B736-9BE7D946A398</PlatformID>
+    <OSVersion>5.0</OSVersion>
+    <DeployDirSuffix>SmartDeviceProject1</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows CE</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowedReferenceRelatedFileExtensions>.allowedReferenceRelatedFileExtensions</AllowedReferenceRelatedFileExtensions>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FileAlignment>512</FileAlignment>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Debug\UX.Lib2.Devices.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowedReferenceRelatedFileExtensions>.allowedReferenceRelatedFileExtensions</AllowedReferenceRelatedFileExtensions>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FileAlignment>512</FileAlignment>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Release\UX.Lib2.Devices.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Crestron.SimplSharpPro.CrestronConnected, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ProgramData\Crestron\SDK\SSPDevices\Crestron.SimplSharpPro.CrestronConnected.dll</HintPath>
+    </Reference>
+    <Reference Include="Crestron.SimplSharpPro.DeviceSupport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ProgramData\Crestron\SDK\SSPDevices\Crestron.SimplSharpPro.DeviceSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Crestron.SimplSharpPro.DM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ProgramData\Crestron\SDK\SSPDevices\Crestron.SimplSharpPro.DM.dll</HintPath>
+    </Reference>
+    <Reference Include="Crestron.SimplSharpPro.UC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ProgramData\Crestron\SDK\SSPDevices\Crestron.SimplSharpPro.UC.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="SimplSharpCustomAttributesInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpCustomAttributesInterface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimplSharpCWSHelperInterface, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\ProgramData\Crestron\SDK\SimplSharpCWSHelperInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="SimplSharpHelperInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpHelperInterface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimplSharpNewtonsoft, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpNewtonsoft.dll</HintPath>
+    </Reference>
+    <Reference Include="SimplSharpPro, Version=1.5.3.17, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpPro.exe</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimplSharpReflectionInterface, Version=1.0.5583.25238, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpReflectionInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpCrestronExtensionsLibrary, Version=1.0.0.10858, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpCrestronExtensionsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpDateTimeLibrary, Version=1.0.0.11003, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpDateTimeLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpDotNetZip, Version=1.9.1.8, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpDotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpProTaskExtensions, Version=1.0.0.11672, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpProTaskExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpReflectionExtensionsLibrary, Version=1.0.0.10876, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpReflectionExtensionsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpThreadingLibrary, Version=1.0.0.10923, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpThreadingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpZip, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpZip.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoConcurrentCollectionsLibrary, Version=1.0.0.11044, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoConcurrentCollectionsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoConsoleLibrary, Version=1.0.0.10586, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoConsoleLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoCryptographyExtensions, Version=1.0.0.11226, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoCryptographyExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoCryptographyLibrary, Version=1.0.0.11066, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoCryptographyLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoIOLibrary, Version=1.0.0.10943, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoIOLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoNetHttpLibrary, Version=1.0.0.12423, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoNetHttpLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoNetLibrary, Version=1.0.0.11191, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoNetLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoNetWebLibrary, Version=1.0.0.11748, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoNetWebLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProIOLibrary, Version=1.0.0.11860, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProIOLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProNetLibrary, Version=1.0.0.10550, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProNetLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProNetWebAsyncLibrary, Version=1.0.0.16008, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProNetWebAsyncLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProNetWebLibrary, Version=1.0.0.12276, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProNetWebLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProTaskLibrary, Version=1.0.0.11149, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProTaskLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProThreadingLibrary, Version=1.0.0.11090, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProThreadingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoSslStreamLibrary, Version=1.0.0.11544, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoSslStreamLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoSupportLibrary, Version=1.0.0.10893, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoSupportLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoThreadingLibrary, Version=1.0.0.11086, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoThreadingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoThreadPoolLibrary, Version=1.0.0.11169, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoThreadPoolLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoTupleLibrary, Version=1.0.0.10958, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoTupleLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoWebLibrary, Version=1.0.0.10524, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoWebLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoX509CertificatesLibrary, Version=1.0.0.11458, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoX509CertificatesLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AirMedia\AirMediaDevice.cs" />
+    <Compile Include="AJA\KiProRecorder.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\AecInputBlock.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\AecInputChannel.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\InputBlock.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\MuteChannel.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\InputChannel.cs" />
+    <Compile Include="Audio\Biamp\IChannels.cs" />
+    <Compile Include="Audio\Biamp\IoChannelBase.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\DanteInputBlock.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\DialerBlock.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\DialerLine.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\LevelChannel.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\LevelControlBlock.cs" />
+    <Compile Include="Audio\Biamp\MultiChannelBlockBase.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\MuteControlBlock.cs" />
+    <Compile Include="Audio\Biamp\Helpers\VoipCallStatusPromptMap.cs" />
+    <Compile Include="Audio\Biamp\Helpers\VoipCallStatusStateMap.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\LogicStateBlock.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\LogicStateChannel.cs" />
+    <Compile Include="Audio\Biamp\ControlBlocks\SourceSelectorBlock.cs" />
+    <Compile Include="Audio\Biamp\Tesira.cs" />
+    <Compile Include="Audio\Biamp\TesiraBlockBase.cs" />
+    <Compile Include="Audio\Biamp\TesiraChannelBase.cs" />
+    <Compile Include="Audio\Biamp\TesiraErrorResponse.cs" />
+    <Compile Include="Audio\Biamp\TesiraMessage.cs" />
+    <Compile Include="Audio\Biamp\TesiraNotification.cs" />
+    <Compile Include="Audio\Biamp\TesiraResponse.cs" />
+    <Compile Include="Audio\Biamp\TtpSshClient.cs" />
+    <Compile Include="Audio\Polycom\AnalogPhoneInChannel.cs" />
+    <Compile Include="Audio\Polycom\AnalogPhoneOutChannel.cs" />
+    <Compile Include="Audio\Polycom\ISoundStructureItem.cs" />
+    <Compile Include="Audio\Polycom\Soundstructure.cs" />
+    <Compile Include="Audio\Polycom\SoundstructureEthernetSettings.cs" />
+    <Compile Include="Audio\Polycom\SoundstructureItemCollection.cs" />
+    <Compile Include="Audio\Polycom\SoundstructureSocket.cs" />
+    <Compile Include="Audio\Polycom\VirtualChannel.cs" />
+    <Compile Include="Audio\Polycom\VirtualChannelGroup.cs" />
+    <Compile Include="Audio\Polycom\VoipChannel.cs" />
+    <Compile Include="Audio\Polycom\VoipInChannel.cs" />
+    <Compile Include="Audio\Polycom\VoipLine.cs" />
+    <Compile Include="Audio\Polycom\VoipLineCollection.cs" />
+    <Compile Include="Audio\Polycom\VoipOutChannel.cs" />
+    <Compile Include="Audio\QSC\Components\AudioFilePlayer.cs" />
+    <Compile Include="Audio\QSC\Components\PotsPhone.cs" />
+    <Compile Include="Audio\QSC\Components\IoStatus.cs" />
+    <Compile Include="Audio\QSC\Components\Gain.cs" />
+    <Compile Include="Audio\QSC\Components\GenericComponent.cs" />
+    <Compile Include="Audio\QSC\Components\IGainControl.cs" />
+    <Compile Include="Audio\QSC\Components\Mixer.cs" />
+    <Compile Include="Audio\QSC\Components\MixerInput.cs" />
+    <Compile Include="Audio\QSC\Components\MixerItem.cs" />
+    <Compile Include="Audio\QSC\Components\MixerItemCollection.cs" />
+    <Compile Include="Audio\QSC\Components\MixerOutput.cs" />
+    <Compile Include="Audio\QSC\Components\PhoneBase.cs" />
+    <Compile Include="Audio\QSC\Components\RouterWithOutput.cs" />
+    <Compile Include="Audio\QSC\Components\ScriptableControls.cs" />
+    <Compile Include="Audio\QSC\Components\SignalPresence.cs" />
+    <Compile Include="Audio\QSC\Components\Sine.cs" />
+    <Compile Include="Audio\QSC\Components\SnapshotController.cs" />
+    <Compile Include="Audio\QSC\Components\SoftPhone.cs" />
+    <Compile Include="Audio\QSC\CoreStatus.cs" />
+    <Compile Include="Audio\QSC\QsysRequest.cs" />
+    <Compile Include="Audio\QSC\QsysResponse.cs" />
+    <Compile Include="Audio\QSC\QsysSocket.cs" />
+    <Compile Include="Audio\QSC\QsysChangeGroup.cs" />
+    <Compile Include="Audio\QSC\Components\ComponentBase.cs" />
+    <Compile Include="Audio\QSC\QsysControl.cs" />
+    <Compile Include="Audio\QSC\QsysCore.cs" />
+    <Compile Include="Audio\Shure\ShureLevel.cs" />
+    <Compile Include="Audio\Shure\ShureP300.cs" />
+    <Compile Include="Audio\Shure\ShureSocket.cs" />
+    <Compile Include="Audio\Yamaha\ParameterCollection.cs" />
+    <Compile Include="Audio\Yamaha\Parameter.cs" />
+    <Compile Include="Audio\Yamaha\Scene.cs" />
+    <Compile Include="Audio\Yamaha\SceneCollection.cs" />
+    <Compile Include="Audio\Yamaha\Snapshot.cs" />
+    <Compile Include="Audio\Yamaha\SnapshotCollection.cs" />
+    <Compile Include="Audio\Yamaha\YamahaDesk.cs" />
+    <Compile Include="Audio\Yamaha\YamahaDeskSocket.cs" />
+    <Compile Include="Barco\BarcoE2Api.cs" />
+    <Compile Include="Barco\BarcoBcmApi.cs" />
+    <Compile Include="Cameras\Sony\IViscaSocket.cs" />
+    <Compile Include="Cameras\Sony\ViscaCamera.cs" />
+    <Compile Include="Cameras\Sony\ViscaOverIpSocket.cs" />
+    <Compile Include="Cameras\Sony\ViscaTcpClient.cs" />
+    <Compile Include="Cisco\Audio\Audio.cs" />
+    <Compile Include="Cisco\Audio\OutputLineConnector.cs" />
+    <Compile Include="Cisco\Audio\InternalSpeaker.cs" />
+    <Compile Include="Cisco\Audio\OutputHdmiConnector.cs" />
+    <Compile Include="Cisco\Audio\OutputConnector.cs" />
+    <Compile Include="Cisco\Audio\Output.cs" />
+    <Compile Include="Cisco\Audio\InputLineConnector.cs" />
+    <Compile Include="Cisco\Audio\InputHdmiConnector.cs" />
+    <Compile Include="Cisco\Audio\Input.cs" />
+    <Compile Include="Cisco\Audio\InputConnector.cs" />
+    <Compile Include="Cisco\Audio\MicrophoneConnector.cs" />
+    <Compile Include="Cisco\Audio\Volume.cs" />
+    <Compile Include="Cisco\Bookings\Booking.cs" />
+    <Compile Include="Cisco\Bookings\Bookings.cs" />
+    <Compile Include="Cisco\Bookings\CurrentBooking.cs" />
+    <Compile Include="Cisco\Call.cs" />
+    <Compile Include="Cisco\CallHistory\CallHistory.cs" />
+    <Compile Include="Cisco\CallHistory\CallHistoryItem.cs" />
+    <Compile Include="Cisco\CallHistory\CallHistoryResults.cs" />
+    <Compile Include="Cisco\Calls.cs" />
+    <Compile Include="Cisco\Cameras\Camera.cs" />
+    <Compile Include="Cisco\Cameras\CameraPosition.cs" />
+    <Compile Include="Cisco\Cameras\Cameras.cs" />
+    <Compile Include="Cisco\Cameras\SpeakerTrack.cs" />
+    <Compile Include="Cisco\Capabilities\Capabilities.cs" />
+    <Compile Include="Cisco\Capabilities\Conference.cs" />
+    <Compile Include="Cisco\CiscoTelePresenceCodec.cs" />
+    <Compile Include="Cisco\CodecApiNameAttribute.cs" />
+    <Compile Include="Cisco\Conference\ActiveSpeaker.cs" />
+    <Compile Include="Cisco\Conference\Call.cs" />
+    <Compile Include="Cisco\Conference\Capabilities.cs" />
+    <Compile Include="Cisco\Conference\Conference.cs" />
+    <Compile Include="Cisco\Conference\ConferenceLine.cs" />
+    <Compile Include="Cisco\Conference\LocalInstance.cs" />
+    <Compile Include="Cisco\Conference\MultiPoint.cs" />
+    <Compile Include="Cisco\Conference\Presentation.cs" />
+    <Compile Include="Cisco\Diagnostics\Diagnostics.cs" />
+    <Compile Include="Cisco\Diagnostics\Message.cs" />
+    <Compile Include="Cisco\Network\Cdp.cs" />
+    <Compile Include="Cisco\Network\NetworkServices.cs" />
+    <Compile Include="Cisco\Network\Ntp.cs" />
+    <Compile Include="Cisco\Network\Voice.cs" />
+    <Compile Include="Cisco\Network\Vlan.cs" />
+    <Compile Include="Cisco\Network\Ipv6.cs" />
+    <Compile Include="Cisco\Network\Ipv4.cs" />
+    <Compile Include="Cisco\Network\Ethernet.cs" />
+    <Compile Include="Cisco\Network\Dns.cs" />
+    <Compile Include="Cisco\Network\DnsDomain.cs" />
+    <Compile Include="Cisco\Network\Server.cs" />
+    <Compile Include="Cisco\Network\Network.cs" />
+    <Compile Include="Cisco\RoomAnalytics\PeopleCount.cs" />
+    <Compile Include="Cisco\RoomAnalytics\RoomAnalytics.cs" />
+    <Compile Include="Cisco\SystemUnit\Hardware.cs" />
+    <Compile Include="Cisco\SystemUnit\Module.cs" />
+    <Compile Include="Cisco\SystemUnit\OptionKeys.cs" />
+    <Compile Include="Cisco\SIP\Registration.cs" />
+    <Compile Include="Cisco\SIP\Proxy.cs" />
+    <Compile Include="Cisco\SIP\SIP.cs" />
+    <Compile Include="Cisco\UserInterface\ContactInfo.cs" />
+    <Compile Include="Cisco\Audio\Microphones.cs" />
+    <Compile Include="Cisco\Phonebook\Phonebook.cs" />
+    <Compile Include="Cisco\Phonebook\PhonebookContact.cs" />
+    <Compile Include="Cisco\Phonebook\PhonebookContactMethod.cs" />
+    <Compile Include="Cisco\Phonebook\PhonebookFolder.cs" />
+    <Compile Include="Cisco\Phonebook\PhonebookItem.cs" />
+    <Compile Include="Cisco\Phonebook\PhonebookSearchResults.cs" />
+    <Compile Include="Cisco\UserInterface\Extensions.cs" />
+    <Compile Include="Cisco\UserInterface\ExternalSource.cs" />
+    <Compile Include="Cisco\UserInterface\Presentation.cs" />
+    <Compile Include="Cisco\UserInterface\Widget.cs" />
+    <Compile Include="Cisco\Video\Cec.cs" />
+    <Compile Include="Cisco\Video\ConnectedDevice.cs" />
+    <Compile Include="Cisco\Video\Input.cs" />
+    <Compile Include="Cisco\Video\InputConnector.cs" />
+    <Compile Include="Cisco\Video\OutputMonitor.cs" />
+    <Compile Include="Cisco\Video\Output.cs" />
+    <Compile Include="Cisco\Video\Presentation.cs" />
+    <Compile Include="Cisco\Video\Resolution.cs" />
+    <Compile Include="Cisco\Video\Selfview.cs" />
+    <Compile Include="Cisco\SystemUnit\Software.cs" />
+    <Compile Include="Cisco\CodecApiElement.cs" />
+    <Compile Include="Cisco\CodecCommand.cs" />
+    <Compile Include="Cisco\CodecCommandArg.cs" />
+    <Compile Include="Cisco\CodecCommandArgs.cs" />
+    <Compile Include="Cisco\CodecRequest.cs" />
+    <Compile Include="Cisco\CodecResponse.cs" />
+    <Compile Include="Cisco\HttpsClient.cs" />
+    <Compile Include="Cisco\CiscoSshClient.cs" />
+    <Compile Include="Cisco\Standby.cs" />
+    <Compile Include="Cisco\SystemUnit\State.cs" />
+    <Compile Include="Cisco\SystemUnit\SystemUnit.cs" />
+    <Compile Include="Cisco\UserInterface\ContactMethod.cs" />
+    <Compile Include="Cisco\UserInterface\UserInterface.cs" />
+    <Compile Include="Cisco\Video\Source.cs" />
+    <Compile Include="Cisco\Video\Video.cs" />
+    <Compile Include="Cisco\Video\OutputConnector.cs" />
+    <Compile Include="Displays\Christie\ChristieComPortHandler.cs" />
+    <Compile Include="Displays\Epson\ComPortHandler.cs" />
+    <Compile Include="Displays\Epson\EpsonProjector.cs" />
+    <Compile Include="Displays\LG\LgSocket.cs" />
+    <Compile Include="Displays\SimpleDisplayDriver.cs" />
+    <Compile Include="Displays\Smart\SmartBoard.cs" />
+    <Compile Include="Displays\Smart\SmartBoardComPortHandler.cs" />
+    <Compile Include="Displays\Smart\SmartBoardVolume.cs" />
+    <Compile Include="Exterity2\AvediaServer.cs" />
+    <Compile Include="Exterity2\Channel.cs" />
+    <Compile Include="Exterity2\ChannelCollection.cs" />
+    <Compile Include="Exterity2\Receiver.cs" />
+    <Compile Include="Exterity2\ReceiverCollection.cs" />
+    <Compile Include="Exterity2\Recordings.cs" />
+    <Compile Include="Exterity2\ServerRequest.cs" />
+    <Compile Include="Displays\Avocor\AvocorSocket.cs" />
+    <Compile Include="Displays\Avocor\AvocorVTF.cs" />
+    <Compile Include="Displays\Canon\CanonTcpSocket.cs" />
+    <Compile Include="Displays\Canon\CanonWux6010.cs" />
+    <Compile Include="Displays\Christie\ChristieTcpSocket.cs" />
+    <Compile Include="Displays\Christie\ChristieGS800.cs" />
+    <Compile Include="Displays\Crestron\CrestronConnectedDisplay.cs" />
+    <Compile Include="Displays\LG\LgComPortHandler.cs" />
+    <Compile Include="Displays\LG\LgDisplay.cs" />
+    <Compile Include="Displays\LG\LgDisplayVolumeLevel.cs" />
+    <Compile Include="Displays\Microsoft\SurfaceHubDisplay.cs" />
+    <Compile Include="Displays\NEC\NecDisplay.cs" />
+    <Compile Include="Displays\NEC\NecDisplaySocket.cs" />
+    <Compile Include="Displays\Samsung\SamsungDisplay.cs" />
+    <Compile Include="Displays\Samsung\SamsungDisplaySocket.cs" />
+    <Compile Include="Displays\Samsung\SamsungDisplayComPortHandler.cs" />
+    <Compile Include="Displays\Sony\SonyBravia.cs" />
+    <Compile Include="Displays\Sony\SonyBraviaHttpClient.cs" />
+    <Compile Include="Displays\Sony\SonyBraviaVolumeControl.cs" />
+    <Compile Include="Exterity\AvediaServer.cs" />
+    <Compile Include="Exterity\Channel.cs" />
+    <Compile Include="Exterity\ChannelCollection.cs" />
+    <Compile Include="Exterity\Receiver.cs" />
+    <Compile Include="Exterity\ReceiverCollection.cs" />
+    <Compile Include="Exterity\ServerRequest.cs" />
+    <None Include="ObfuscationSettings.cs" />
+    <Compile Include="Extron\ExtronSmp.cs" />
+    <Compile Include="Extron\ExtronSocket.cs" />
+    <Compile Include="FireInterfaces\FireAlarmMonitor.cs" />
+    <Compile Include="FireInterfaces\FireAlarmServerSocket.cs" />
+    <Compile Include="FutureAutomations\FaMotorController.cs" />
+    <Compile Include="GlobalCache\GcControlSocket.cs" />
+    <Compile Include="GlobalCache\GcRelay.cs" />
+    <Compile Include="GlobalCache\GcRelayInterface.cs" />
+    <Compile Include="Google\GoogleMeet.cs" />
+    <Compile Include="Lightware3\LightwareOutput.cs" />
+    <Compile Include="Lightware3\LightwareInput.cs" />
+    <Compile Include="Lightware3\LightwareInputOutput.cs" />
+    <Compile Include="Lightware3\LightwareMatrix.cs" />
+    <Compile Include="Lightware3\LightwareSocket.cs" />
+    <Compile Include="Lightware\LightwareInput.cs" />
+    <Compile Include="Lightware\LightwareInputOutput.cs" />
+    <Compile Include="Lightware\LightwareMatrix.cs" />
+    <Compile Include="Lightware\LightwareOutput.cs" />
+    <Compile Include="Lightware\LightwareSocket.cs" />
+    <Compile Include="Mersive\SolsticePod.cs" />
+    <Compile Include="Polycom\AddressBook.cs" />
+    <Compile Include="Polycom\AddressBookItem.cs" />
+    <Compile Include="Polycom\CalendarMeeting.cs" />
+    <Compile Include="Polycom\CalendarMeetings.cs" />
+    <Compile Include="Polycom\Call.cs" />
+    <Compile Include="Polycom\Calls.cs" />
+    <Compile Include="Polycom\Cameras.cs" />
+    <Compile Include="Polycom\ComPortHandler.cs" />
+    <Compile Include="Polycom\MeetingDiallingNumber.cs" />
+    <Compile Include="Polycom\Microphones.cs" />
+    <Compile Include="Polycom\PolycomCamera.cs" />
+    <Compile Include="Polycom\PolycomGroupSeriesCodec.cs" />
+    <Compile Include="Polycom\PolycomSocketHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relays\CrestronRelay.cs" />
+    <Compile Include="TriplePlay\ServerRequest.cs" />
+    <Compile Include="TriplePlay\Channel.cs" />
+    <Compile Include="TriplePlay\TripleCare.cs" />
+    <Compile Include="TV\AppleTV.cs" />
+    <Compile Include="ZeeVee\HdmiInput.cs" />
+    <Compile Include="ZeeVee\HdmiInputOutputBase.cs" />
+    <Compile Include="ZeeVee\HdmiOutput.cs" />
+    <Compile Include="ZeeVee\VideoResolution.cs" />
+    <Compile Include="ZeeVee\ZeeVeeDeviceBase.cs" />
+    <Compile Include="ZeeVee\ZeeVeeDeviceCollection.cs" />
+    <Compile Include="ZeeVee\ZeeVeeDecoder.cs" />
+    <Compile Include="ZeeVee\ZeeVeeEncoder.cs" />
+    <Compile Include="ZeeVee\ZeeVeeServer.cs" />
+    <Compile Include="ZeeVee\ZeeVeeServerSocket.cs" />
+    <None Include="Properties\ControlSystem.cfg" />
+    <None Include="README.md" />
+    <EmbeddedResource Include="TV\Apple_AppleTV_3rd_Generation.ir" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lib2\UX.Lib2.csproj">
+      <Project>{D9251E63-34C3-43F3-9D26-E534A4CCB4B1}</Project>
+      <Name>UX.Lib2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
