@@ -12,7 +12,7 @@ using UX.Lib2.DeviceSupport;
 
 namespace UX.Lib2.Devices.Cisco
 {
-    public class CiscoTelePresenceCodec : ISourceDevice, IFusionAsset
+    public class CiscoTelePresenceCodec : ISourceDevice, IFusionAsset, IInitializeComplete
     {
         #region Fields
 
@@ -42,6 +42,7 @@ namespace UX.Lib2.Devices.Cisco
             new Dictionary<int, CodecCommandResponse>();
 
         private bool _disconnectCallsIfNotBeingUsed = true;
+        private bool _initialized;
 
         #endregion
 
@@ -392,6 +393,7 @@ namespace UX.Lib2.Devices.Cisco
                     break;
                 case SshClientStatus.Disconnected:
                     OnDeviceCommunicatingChange(this, false);
+                    _initialized = false;
                     break;
             }
         }
@@ -427,6 +429,8 @@ namespace UX.Lib2.Devices.Cisco
                     OnStatusReceived((from Match statusMatch in matches
                         select new StatusUpdateItem(statusMatch))
                         .ToArray());
+                    _initialized = true;
+                    CloudLog.Notice("{0} Initialized OK", this);
                     break;
                 case ReceivedDataType.Event:
                     var items = new Dictionary<string, Dictionary<string, string>>();
@@ -554,6 +558,11 @@ namespace UX.Lib2.Devices.Cisco
         {
             _httpsClient.StartSession();
             _sshClient.Connect();
+        }
+
+        public bool CheckInitializedOk()
+        {
+            return _initialized;
         }
 
         public void HttpsClientAbort()
