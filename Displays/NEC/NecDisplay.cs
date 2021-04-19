@@ -23,6 +23,7 @@ namespace UX.Lib2.Devices.Displays.NEC
         private byte _currentInput;
         private ushort _volumeLevel;
         private bool _mute;
+        private readonly NecComPortHandler _comPort;
 
         #endregion
 
@@ -48,6 +49,31 @@ namespace UX.Lib2.Devices.Displays.NEC
             _socket = new NecDisplaySocket(address);
             _socket.StatusChanged += SocketOnStatusChanged;
             _socket.ReceivedData += SocketOnReceivedData;
+            AudioLevels = new AudioLevelCollection
+            {
+                this
+            };
+        }
+
+        public NecDisplay(string name, int displayId, NecComPortHandler comPortHandler)
+            : base (name)
+        {
+            var inputs = new List<DisplayDeviceInput>
+            {
+                DisplayDeviceInput.VGA,
+                DisplayDeviceInput.DVI,
+                DisplayDeviceInput.DVI2,
+                DisplayDeviceInput.DisplayPort,
+                DisplayDeviceInput.DisplayPort2,
+                DisplayDeviceInput.HDMI1,
+                DisplayDeviceInput.HDMI2,
+                DisplayDeviceInput.HDMI3,
+                DisplayDeviceInput.HDMI4
+            };
+            _availableInputs = new ReadOnlyCollection<DisplayDeviceInput>(inputs);
+            _displayId = displayId;
+            _comPort = comPortHandler;
+            _comPort.ReceivedPacket += ComPortOnReceivedPacket;
             AudioLevels = new AudioLevelCollection
             {
                 this
@@ -164,19 +190,40 @@ namespace UX.Lib2.Devices.Displays.NEC
         public void SendCommand(int address, string message)
         {
             var str = "\x02" + message + "\x03";
-            _socket.Send(address, MessageType.Command, str);
+            if (_socket != null)
+            {
+                _socket.Send(address, MessageType.Command, str);
+            }
+            else if (_comPort != null)
+            {
+                _comPort.Send(address, MessageType.Command, str);
+            }
         }
 
         public void SetParameter(int address, string message)
         {
             var str = "\x02" + message + "\x03";
-            _socket.Send(address, MessageType.SetParameter, str);
+            if (_socket != null)
+            {
+                _socket.Send(address, MessageType.SetParameter, str);
+            }
+            else if (_comPort != null)
+            {
+                _comPort.Send(address, MessageType.SetParameter, str);
+            }
         }
 
         public void GetParameter(int address, string message)
         {
             var str = "\x02" + message + "\x03";
-            _socket.Send(address, MessageType.GetParameter, str);
+            if (_socket != null)
+            {
+                _socket.Send(address, MessageType.GetParameter, str);
+            }
+            else if (_comPort != null)
+            {
+                _comPort.Send(address, MessageType.GetParameter, str);
+            }
         }
 
         void SendInputCommand(byte command)
@@ -230,6 +277,11 @@ namespace UX.Lib2.Devices.Displays.NEC
         public override void SetInput(DisplayDeviceInput input)
         {
             SendInputCommand(GetInputCommandForInput(input));
+        }
+
+        private void ComPortOnReceivedPacket(NecComPortHandler handler, byte[] receivedPacket)
+        {
+            SocketOnReceivedData(receivedPacket);
         }
 
         private void SocketOnReceivedData(byte[] bytes)
@@ -360,7 +412,14 @@ namespace UX.Lib2.Devices.Displays.NEC
 
         public override void Initialize()
         {
-            _socket.Connect();
+            if (_socket != null)
+            {
+                _socket.Connect();
+            }
+            else if (_comPort != null)
+            {
+                _comPort.Initialize();
+            }
         }
 
         #endregion

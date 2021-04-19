@@ -398,6 +398,7 @@
     <Compile Include="Displays\Epson\ComPortHandler.cs" />
     <Compile Include="Displays\Epson\EpsonProjector.cs" />
     <Compile Include="Displays\LG\LgSocket.cs" />
+    <Compile Include="Displays\NEC\NecComPortHandler.cs" />
     <Compile Include="Displays\SimpleDisplayDriver.cs" />
     <Compile Include="Displays\Smart\SmartBoard.cs" />
     <Compile Include="Displays\Smart\SmartBoardComPortHandler.cs" />
@@ -434,7 +435,6 @@
     <Compile Include="Exterity\Receiver.cs" />
     <Compile Include="Exterity\ReceiverCollection.cs" />
     <Compile Include="Exterity\ServerRequest.cs" />
-    <None Include="ObfuscationSettings.cs" />
     <Compile Include="Extron\ExtronSmp.cs" />
     <Compile Include="Extron\ExtronSocket.cs" />
     <Compile Include="FireInterfaces\FireAlarmMonitor.cs" />
