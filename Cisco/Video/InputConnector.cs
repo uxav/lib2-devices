@@ -76,6 +76,8 @@ namespace UX.Lib2.Devices.Cisco.Video
     public enum InputSignalState
     {
         OK,
+        NotFound,
+        Unstable,
         Unknown,
         Unsupported
     }
