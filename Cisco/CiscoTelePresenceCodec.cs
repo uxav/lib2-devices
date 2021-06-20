@@ -429,9 +429,9 @@ namespace UX.Lib2.Devices.Cisco
                     OnStatusReceived((from Match statusMatch in matches
                         select new StatusUpdateItem(statusMatch))
                         .ToArray());
+                    CloudLog.Notice("{0} Initialized OK", this);
                     if(_initialized) return;
                     _initialized = true;
-                    CloudLog.Notice("{0} Initialized OK", this);
                     break;
                 case ReceivedDataType.Event:
                     var items = new Dictionary<string, Dictionary<string, string>>();
