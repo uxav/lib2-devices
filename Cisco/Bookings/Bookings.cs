@@ -68,8 +68,8 @@ namespace UX.Lib2.Devices.Cisco.Bookings
 
             var result = response.Xml.Element("Command").Element("BookingsListResult");
 
-            Debug.WriteInfo("Bookings List");
-            Debug.WriteNormal(Debug.AnsiPurple + result + Debug.AnsiReset);
+            //Debug.WriteInfo("Bookings List");
+            //Debug.WriteNormal(Debug.AnsiPurple + result + Debug.AnsiReset);
 
             if (result.Attribute("status").Value == "Error")
             {
@@ -122,21 +122,9 @@ namespace UX.Lib2.Devices.Cisco.Bookings
         {
             if(name != "Bookings") return;
 
-            foreach (var property in properties)
-            {
-                try
-                {
-                    Debug.WriteSuccess("Booking Event", "{0} = {1}", property.Key, property.Value);
-                }
-                catch
-                {
-                    Debug.WriteError("Booking Event", "Could not show property!");                    
-                }
-            }
-
             if (properties.ContainsKey("Updated"))
             {
-                Debug.WriteWarn("Bookings updated... getting bookings");
+                //Debug.WriteWarn("Bookings updated... getting bookings");
                 GetBookingsAsync();
             }
         }
