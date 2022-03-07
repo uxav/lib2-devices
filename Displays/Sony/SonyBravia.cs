@@ -42,7 +42,7 @@ namespace UX.Lib2.Devices.Displays.Sony
             CrestronEnvironment.ProgramStatusEventHandler += type =>
             {
                 _programStopping = type == eProgramStatusEventType.Stopping;
-                if (_programStopping)
+                if (_programStopping && _checkWait != null)
                 {
                     _checkWait.Set();
                 }
