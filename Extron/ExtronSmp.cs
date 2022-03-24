@@ -195,6 +195,11 @@ namespace UX.Lib2.Devices.Extron
             }
         }
 
+        public string IpAddress
+        {
+            get { return _socket.HostAddress; }
+        }
+
         public enum eRecordStatus
         {
             Stopped,
