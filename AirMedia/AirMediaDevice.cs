@@ -4,7 +4,9 @@ using System.Linq;
 using Crestron.SimplSharp.Reflection;
 using Crestron.SimplSharpPro;
 using Crestron.SimplSharpPro.DeviceSupport;
+using Crestron.SimplSharpPro.DM;
 using Crestron.SimplSharpPro.DM.AirMedia;
+using Crestron.SimplSharpPro.DM.Cards;
 using Crestron.SimplSharpPro.UC;
 using UX.Lib2.Cloud.Logger;
 using UX.Lib2.DeviceSupport;
@@ -16,6 +18,23 @@ namespace UX.Lib2.Devices.AirMedia
         private string _deviceIpAddress;
         private readonly GenericDevice _device;
         private bool _resetConnectionsOnStop = true;
+        private Card.Dmps3AirMediaInput _amCard;
+
+        public AirMediaDevice(CrestronControlSystem controlSystem)
+        {
+            try
+            {
+                if (controlSystem.SupportsInternalAirMedia && controlSystem.SwitcherInputs[10].CardInputOutputType == eCardInputOutputType.Dmps3AirMediaInput)
+                {
+                    var am = controlSystem.SwitcherInputs[10] as Card.Dmps3AirMediaInput;
+                    _amCard = am;
+                }
+            }
+            catch (Exception e)
+            {
+                CloudLog.Exception(e, "Error loading Air Media Device");
+            }
+        }
 
         public AirMediaDevice(uint ipId, CrestronControlSystem controlSystem, string deviceType, string description)
         {
@@ -60,7 +79,15 @@ namespace UX.Lib2.Devices.AirMedia
 
         public string Name
         {
-            get { return _device.Name; }
+            get
+            {
+                if (_amCard != null)
+                {
+                    return _amCard.Name.StringValue;
+                }
+
+                return _device.Name;
+            }
         }
 
         public string ManufacturerName
@@ -70,13 +97,26 @@ namespace UX.Lib2.Devices.AirMedia
 
         public string ModelName
         {
-            get { return _device.GetType().Name; }
+            get
+            {
+                if (_amCard != null)
+                {
+                    return _amCard.GetType().Name;
+                }
+
+                return _device.GetType().Name;
+            }
         }
 
         public string DiagnosticsName
         {
             get
             {
+                if (_amCard != null)
+                {
+                    return _amCard.ToString();
+                }
+
                 if (string.IsNullOrEmpty(_device.Description))
                 {
                     return _device.ToString();
@@ -87,12 +127,28 @@ namespace UX.Lib2.Devices.AirMedia
 
         public bool DeviceCommunicating
         {
-            get { return _device.IsOnline; }
+            get
+            {
+                if (_amCard != null)
+                {
+                    return true;
+                }
+
+                return _device.IsOnline;
+            }
         }
 
         public string DeviceAddressString
         {
-            get { return _deviceIpAddress; }
+            get
+            {
+                if (_amCard != null)
+                {
+                    return _amCard.CurrentIpAddressFeedback.StringValue;
+                }
+
+                return _deviceIpAddress;
+            }
         }
 
         public string SerialNumber
@@ -144,6 +200,7 @@ namespace UX.Lib2.Devices.AirMedia
         public void StopPlaying()
         {
             if(!_resetConnectionsOnStop) return;
+            if (_amCard != null) return;
             var am100 = _device as Am100;
             if (am100 != null)
             {
@@ -159,6 +216,7 @@ namespace UX.Lib2.Devices.AirMedia
 
         public void SelectInput(AmX00DisplayControl.eAirMediaX00VideoSource input)
         {
+            if (_amCard != null) return;
             var device = _device as AmX00;
             if (device == null)
             {
@@ -174,7 +232,10 @@ namespace UX.Lib2.Devices.AirMedia
 
         public void Initialize()
         {
-            
+            if (_amCard != null)
+            {
+                DeviceCommunicatingChange(this, true);
+            }
         }
 
         private void AmOnOnlineStatusChange(GenericBase currentDevice, OnlineOfflineEventArgs args)
@@ -218,6 +279,11 @@ namespace UX.Lib2.Devices.AirMedia
         {
             get
             {
+                if (_amCard != null)
+                {
+                    return _amCard.MediaConfiguration.ConnectionAddressFeedback.StringValue;
+                }
+
                 var device = _device as AmX00;
                 if (device != null)
                 {
@@ -231,6 +297,11 @@ namespace UX.Lib2.Devices.AirMedia
         {
             get
             {
+                if (_amCard != null)
+                {
+                    return _amCard.MediaConfiguration.LoginCodeFeedback.UShortValue.ToString("D4");
+                }
+
                 var device = _device as AmX00;
                 if (device != null)
                 {
