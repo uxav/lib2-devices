@@ -34,7 +34,7 @@ namespace UX.Lib2.Devices.Extron
 
         public new void Send(string stringToSend)
         {
-            var bytes = Encoding.ASCII.GetBytes(stringToSend);
+            //var bytes = Encoding.ASCII.GetBytes(stringToSend);
             //Debug.WriteInfo("Extron Tx", Tools.GetBytesAsReadableString(bytes, 0, bytes.Length, true));
             base.Send(stringToSend);
         }
