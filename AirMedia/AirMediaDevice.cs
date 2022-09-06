@@ -26,7 +26,7 @@ namespace UX.Lib2.Devices.AirMedia
             {
                 if (controlSystem.SupportsInternalAirMedia && controlSystem.SwitcherInputs[10].CardInputOutputType == eCardInputOutputType.Dmps3AirMediaInput)
                 {
-                    var am = controlSystem.SwitcherInputs[10] as Card.Dmps3AirMediaInput;
+                    var am = controlSystem.SwitcherInputs[9] as Card.Dmps3AirMediaInput;
                     _amCard = am;
                 }
             }
@@ -134,7 +134,12 @@ namespace UX.Lib2.Devices.AirMedia
                     return true;
                 }
 
-                return _device.IsOnline;
+                if (_device != null)
+                {
+                    return _device.IsOnline;
+                }
+
+                return false;
             }
         }
 
