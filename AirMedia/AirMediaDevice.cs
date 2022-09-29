@@ -18,15 +18,16 @@ namespace UX.Lib2.Devices.AirMedia
         private string _deviceIpAddress;
         private readonly GenericDevice _device;
         private bool _resetConnectionsOnStop = true;
-        private Card.Dmps3AirMediaInput _amCard;
+        private readonly Card.Dmps3AirMediaInput _amCard;
 
         public AirMediaDevice(CrestronControlSystem controlSystem)
         {
             try
             {
-                if (controlSystem.SupportsInternalAirMedia && controlSystem.SwitcherInputs[10].CardInputOutputType == eCardInputOutputType.Dmps3AirMediaInput)
+                CloudLog.Notice("AirMedia Card type is " + controlSystem.SwitcherInputs[(int)CrestronControlSystem.eDmps34K350CInputs.AirMedia].CardInputOutputType);
+                if (controlSystem.SupportsInternalAirMedia && controlSystem.SwitcherInputs[(int)CrestronControlSystem.eDmps34K350CInputs.AirMedia].CardInputOutputType == eCardInputOutputType.Dmps3AirMediaInput)
                 {
-                    var am = controlSystem.SwitcherInputs[9] as Card.Dmps3AirMediaInput;
+                    var am = controlSystem.SwitcherInputs[(int)CrestronControlSystem.eDmps34K350CInputs.AirMedia] as Card.Dmps3AirMediaInput;
                     _amCard = am;
                 }
             }
