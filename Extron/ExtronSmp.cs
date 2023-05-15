@@ -43,7 +43,7 @@ namespace UX.Lib2.Devices.Extron
                 }
 
                 match = Regex.Match(receivedString,
-                    @"<ChA(\d)\*ChB(\d)>\*<(\w+)>\*<(\w+)(?:\*(.+))?>\*<(\d+)(?:\*(.+))?>\*<([\d:]+)>\*<([\d:]+)(?:\*([\d:]+))?>");
+                    @"<ChA(\d)\*ChB(\d)>\*<(\w+)>\*<(\w+)(?:\*(.+))?>\*<(\d+|N\/A)(?:\*(.+))?>\*<([\d:]+)>\*<([\d:]+)(?:\*([\d:]+))?>");
                 if (match.Success)
                 {
                     try
@@ -62,7 +62,14 @@ namespace UX.Lib2.Devices.Extron
                     {
                         _storageLocation = eStorageType.Unknown;
                     }
-                    _bytesAvailable = long.Parse(match.Groups[6].Value)*1000;
+                    if (match.Groups[6].Value == "N/A" || !match.Groups[6].Success)
+                    {
+                        _bytesAvailable = 0;
+                    }
+                    else
+                    {
+                        _bytesAvailable = long.Parse(match.Groups[6].Value)*1000;
+                    }
                     _timer = TimeFromString(match.Groups[8].Value);
                     _timeAvailable = TimeFromString(match.Groups[9].Value);
                     OnStatusUpdated(this);
