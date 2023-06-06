@@ -17,6 +17,9 @@ namespace UX.Lib2.Devices.Cisco.Video
         [CodecApiNameAttribute("Presentation")]
         private Presentation _presentation;
 
+        [CodecApiNameAttribute("Layout")]
+        private Layout _layout;
+
         [CodecApiNameAttribute("Monitors")]
 #pragma warning disable 649 // assigned using reflection
         private VideoMonitors _monitors;
@@ -33,6 +36,7 @@ namespace UX.Lib2.Devices.Cisco.Video
             _input = new Input(this, "Input");
             _output = new Output(this, "Output");
             _presentation = new Presentation(this, "Presentation");
+            _layout = new Layout(this, "Layout");
         }
 
         #endregion
@@ -56,6 +60,11 @@ namespace UX.Lib2.Devices.Cisco.Video
         public Input Input
         {
             get { return _input; }
+        }
+
+        public Layout Layout
+        {
+            get { return _layout; }
         }
 
         public Output Output

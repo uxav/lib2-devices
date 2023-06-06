@@ -368,10 +368,13 @@
     <Compile Include="Cisco\UserInterface\ExternalSource.cs" />
     <Compile Include="Cisco\UserInterface\Presentation.cs" />
     <Compile Include="Cisco\UserInterface\Widget.cs" />
+    <Compile Include="Cisco\Video\AvailableLayout.cs" />
     <Compile Include="Cisco\Video\Cec.cs" />
     <Compile Include="Cisco\Video\ConnectedDevice.cs" />
+    <Compile Include="Cisco\Video\CurrentLayouts.cs" />
     <Compile Include="Cisco\Video\Input.cs" />
     <Compile Include="Cisco\Video\InputConnector.cs" />
+    <Compile Include="Cisco\Video\Layout.cs" />
     <Compile Include="Cisco\Video\OutputMonitor.cs" />
     <Compile Include="Cisco\Video\Output.cs" />
     <Compile Include="Cisco\Video\Presentation.cs" />
