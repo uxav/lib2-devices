@@ -242,37 +242,37 @@ namespace UX.Lib2.Devices.Cisco.Cameras
 
         public void Ramp(CameraPanCommand command)
         {
-            Codec.Send("xCommand Camera Ramp CameraId: {0} Pan: {1}", _id, command);
+            Codec.SendNoWait("xCommand Camera Ramp CameraId: {0} Pan: {1}", _id, command);
         }
 
         public void Ramp(CameraPanCommand command, int speed)
         {
-            Codec.Send("xCommand Camera Ramp CameraId: {0} Pan: {1}, PanSpeed: {2}", _id, command, speed);
+            Codec.SendNoWait("xCommand Camera Ramp CameraId: {0} Pan: {1}, PanSpeed: {2}", _id, command, speed);
         }
 
         public void Ramp(CameraTiltCommand command)
         {
-            Codec.Send("xCommand Camera Ramp CameraId: {0} Tilt: {1}", _id, command);
+            Codec.SendNoWait("xCommand Camera Ramp CameraId: {0} Tilt: {1}", _id, command);
         }
 
         public void Ramp(CameraTiltCommand command, int speed)
         {
-            Codec.Send("xCommand Camera Ramp CameraId: {0} Tilt: {1}, TiltSpeed: {2}", _id, command, speed);
+            Codec.SendNoWait("xCommand Camera Ramp CameraId: {0} Tilt: {1}, TiltSpeed: {2}", _id, command, speed);
         }
 
         public void Ramp(CameraZoomCommand command)
         {
-            Codec.Send("xCommand Camera Ramp CameraId: {0} Zoom: {1}", _id, command);
+            Codec.SendNoWait("xCommand Camera Ramp CameraId: {0} Zoom: {1}", _id, command);
         }
 
         public void Ramp(CameraZoomCommand command, int speed)
         {
-            Codec.Send("xCommand Camera Ramp CameraId: {0} Zoom: {1}, ZoomSpeed: {2}", _id, command, speed);
+            Codec.SendNoWait("xCommand Camera Ramp CameraId: {0} Zoom: {1}, ZoomSpeed: {2}", _id, command, speed);
         }
 
         public void Ramp(CameraFocusCommand command)
         {
-            Codec.Send("xCommand Camera Ramp CameraId: {0} Focus: {1}", _id, command);
+            Codec.SendNoWait("xCommand Camera Ramp CameraId: {0} Focus: {1}", _id, command);
         }
 
         public void AutoFocus()

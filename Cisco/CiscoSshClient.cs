@@ -33,6 +33,7 @@ namespace UX.Lib2.Devices.Cisco
         private bool _loggedIn;
         private readonly Stopwatch _stopWatch = new Stopwatch();
         private SshClientStatus _connectionStatus;
+        private bool _sendNow = false;
 
         #endregion
 
@@ -163,6 +164,20 @@ namespace UX.Lib2.Devices.Cisco
             {
                 _sendQueue.Enqueue(line);
                 //_threadWait.Set();
+            }
+            else
+            {
+                CloudLog.Warn("Could not send \"{0}\" to codec. No Connection", line);
+            }
+        }
+
+        public void SendNow(string line)
+        {
+            if (Connected)
+            {
+                _sendQueue.Enqueue(line);
+                //_threadWait.Set();
+                _sendNow = true;
             }
             else
             {
@@ -372,6 +387,12 @@ namespace UX.Lib2.Devices.Cisco
                             _stopWatch.Reset();
 #endif
                             CrestronEnvironment.AllowOtherAppsToRun();
+                            if (_sendNow)
+                            {
+                                // important tx message waiting, reset flag and leave rx loop
+                                _sendNow = false;
+                                break;
+                            }
                         }
 
                         if (errorOnConnect)

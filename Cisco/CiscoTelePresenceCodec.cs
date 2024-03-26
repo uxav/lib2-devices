@@ -1,4 +1,3 @@
- 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,21 +78,17 @@ namespace UX.Lib2.Devices.Cisco
                 "codecsend", "Send a codec xCommand",
                 ConsoleAccessLevelEnum.AccessOperator);
             CrestronConsole.AddNewConsoleCommand(parameters =>
-                Send(string.Format("xCommand {0}", parameters)),
+                    Send(string.Format("xCommand {0}", parameters)),
                 "xCommand", "Send a codec xCommand",
                 ConsoleAccessLevelEnum.AccessOperator);
             CrestronConsole.AddNewConsoleCommand(parameters =>
-                Calls.DialNumber(parameters, (code, description, call) =>
-                {
-
-                }),
+                    Calls.DialNumber(parameters, (code, description, call) => { }),
                 "Dial", "Dial a number",
                 ConsoleAccessLevelEnum.AccessOperator);
             CrestronConsole.AddNewConsoleCommand(parameters => Send("xStatus"),
                 "CodecStatus", "Get the full status of the codec",
                 ConsoleAccessLevelEnum.AccessOperator);
 #endif
-
         }
 
         #endregion
@@ -246,6 +241,7 @@ namespace UX.Lib2.Devices.Cisco
                 {
                     CloudLog.Warn("Could not return serial number for {0}", GetType().Name);
                 }
+
                 return string.Empty;
             }
         }
@@ -262,6 +258,7 @@ namespace UX.Lib2.Devices.Cisco
                 {
                     CloudLog.Warn("Could not return version info for {0}", GetType().Name);
                 }
+
                 return string.Empty;
             }
         }
@@ -288,10 +285,7 @@ namespace UX.Lib2.Devices.Cisco
 
         public FusionAssetType AssetType
         {
-            get
-            {
-                return FusionAssetType.VideoConferenceCodec;
-            }
+            get { return FusionAssetType.VideoConferenceCodec; }
         }
 
         public bool DisableAutoSleepOnStopPlaying { get; set; }
@@ -322,6 +316,11 @@ namespace UX.Lib2.Devices.Cisco
         public void Send(string stringToSend, params object[] args)
         {
             _sshClient.Send(string.Format(stringToSend, args));
+        }
+
+        public void SendNoWait(string stringToSend, params object[] args)
+        {
+            _sshClient.SendNow(string.Format(stringToSend, args));
         }
 
         internal CodecResponse SendCommand(CodecCommand command)
@@ -372,6 +371,7 @@ namespace UX.Lib2.Devices.Cisco
                         "Received 401 code in {0}.SendCommandAsync(CodecCommand command, CodecCommandResponse callback)",
                         GetType().Name);
                 }
+
                 call(response.Request.Id, false, null);
             });
             _commandCallbacksLock.Enter();
@@ -424,10 +424,11 @@ namespace UX.Lib2.Devices.Cisco
                             CloudLog.Exception(e);
                         }
                     }
+
                     break;
                 case ReceivedDataType.Status:
                     OnStatusReceived((from Match statusMatch in matches
-                        select new StatusUpdateItem(statusMatch))
+                            select new StatusUpdateItem(statusMatch))
                         .ToArray());
                     if (_initialized) return;
                     CloudLog.Notice("{0} Initialized OK", this);
@@ -456,6 +457,7 @@ namespace UX.Lib2.Devices.Cisco
                     {
                         OnEventReceived(item.Key, item.Value);
                     }
+
                     break;
                 case ReceivedDataType.Response:
                     foreach (Match response in matches)
@@ -467,6 +469,7 @@ namespace UX.Lib2.Devices.Cisco
                             response.Groups[3].Value);
 #endif
                     }
+
                     break;
             }
         }
@@ -531,7 +534,6 @@ namespace UX.Lib2.Devices.Cisco
 
         public void UpdateOnSourceRequest()
         {
-            
         }
 
         public void StartPlaying()
@@ -590,7 +592,8 @@ namespace UX.Lib2.Devices.Cisco
         public string Value { get; set; }
     }
 
-    public delegate void ConfigurationChangeEventHandler(CiscoTelePresenceCodec codec, ConfigurationChangeEventArgs args);
+    public delegate void ConfigurationChangeEventHandler(CiscoTelePresenceCodec codec,
+        ConfigurationChangeEventArgs args);
 
     internal delegate void EventNotificationReceivedHandler(
         CiscoTelePresenceCodec codec, string name, Dictionary<string, string> properties);
