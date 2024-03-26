@@ -65,6 +65,14 @@ namespace UX.Lib2.Devices.Exterity
             }
         }
 
+        public string GetIconUrl(int size)
+        {
+            return string.IsNullOrEmpty(_icon)
+                ? string.Empty
+                : string.Format("http://{0}/media/feeds/image?imageid={1}&max={2}", _server.HostNameOrIpAddress,
+                    _icon, size);
+        }
+
         public string Name { get; internal set; }
         public string Uri { get; internal set; }
         public uint Number { get; internal set; }
